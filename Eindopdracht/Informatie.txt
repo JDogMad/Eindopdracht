@@ -1,0 +1,26 @@
+﻿
+Mobile app 
+-> Naam: Laced
+-> Dimensie: 414; 896
+-> Kleuren: #ea5e5b / #bd202c / #9f1111
+
+Project Voorstel
+Het idee is om een soort webshop te creëren voor schoenen. 
+Bij het installeren van de mobile app, maak je een account aan nadien kom je terecht op de main pagina. 
+De main pagina bevat een x aantal schoenen die verkocht worden. (CHECK)
+Je kan de prijs, de details zien en ook kan je kiezen tussen een bod plaatsten of direct in winkelwagen te zetten. 
+Op uw profiel tab, vind je een paar instelling, maar ook een soort van wishlist waar je een paar schoenen die je graag wilt kunt bijhouden. 
+Je krijgt een melding mocht die schoen beschikbaar zijn. 
+
+Er word gebruik gemaakt van een database, deze houdt de inloggegevens bij. 
+Maar ook de voorraad van schoen en hun details. 
+Ook is er een tabel die de wishlist van elk persoon bijhoudt en dus refereert naar de persoon tabel. 
+
+
+Bronnen
+Interlocked.Increment (microsoft documentation): 
+https://learn.microsoft.com/en-us/dotnet/api/system.threading.interlocked.increment?view=net-6.0 
+Gradient background color form:
+https://www.daveoncsharp.com/2009/09/how-to-paint-a-gradient-background-for-your-forms/
+Deprecated Image:
+https://learn.microsoft.com/en-us/sql/t-sql/data-types/ntext-text-and-image-transact-sql?redirectedfrom=MSDN&view=sql-server-ver16
