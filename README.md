@@ -38,7 +38,9 @@ Selecteer welke schoen je wilt kopen en bam! Verkocht! U bent de nieuwe eigenaar
 
 
 
-* Extra Informatie 
+* Extra 
+
+Informatie 
 Ik heb Image in mijn database proberen te gebruiken, tot dat ik pas tegen het einde te weten kom dat deze gedeprected is. 
 Ik heb deze tabel niet uit de database kunnen halen wegens foreign keys. 
 
