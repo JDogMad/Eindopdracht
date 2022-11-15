@@ -159,30 +159,34 @@ namespace Eindopdracht {
 
                         SqlConnection connection = new(connectionString);
                         connection.Open();
+                        if (bid > 0 && bid > (double)shoe.Price - (bid/10)) { 
+                            if (User.Username != null){
+                                SqlCommand c = new("SELECT Id FROM [USER] WHERE Username='" + User.Username + "'", connection);
+                                SqlDataReader read = c.ExecuteReader();
+                                read.Read();
+                                UserId = (int)read["Id"];
+                                read.Close();
 
-                        if (User.Username != null){
-                            SqlCommand c = new("SELECT Id FROM [USER] WHERE Username='" + User.Username + "'", connection);
-                            SqlDataReader read = c.ExecuteReader();
-                            read.Read();
-                            UserId = (int)read["Id"];
-                            read.Close();
+                                SqlCommand cd = new SqlCommand("SELECT Id FROM Bid", connection);
+                                SqlDataReader reader = cd.ExecuteReader();
+                                while (reader.Read()) {
+                                    BidIds.Add((int)reader["Id"]);
+                                }
+                                reader.Close();
 
-                            SqlCommand cd = new SqlCommand("SELECT Id FROM Bid", connection);
-                            SqlDataReader reader = cd.ExecuteReader();
-                            while (reader.Read()) {
-                                BidIds.Add((int)reader["Id"]);
+                                id += BidIds.Count + 1;
+
+                                SqlCommand cmd = new("INSERT INTO Bid (Id, ShoeId, UserId, Bid) VALUES ('" + id + "','" + shoe.Id + "','" +
+                                     UserId + "','" + bid + "')", connection);
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Bid placed. ", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            } else {
+                                // Mogelijke error opgevangen door messagebox
+                                MessageBox.Show("You are not logged in. To place a bid, you must be logged in.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            reader.Close();
-
-                            id += BidIds.Count + 1;
-
-                            SqlCommand cmd = new("INSERT INTO Bid (Id, ShoeId, UserId, Bid) VALUES ('" + id + "','" + shoe.Id + "','" +
-                                 UserId + "','" + bid + "')", connection);
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Bid placed. ", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         } else {
                             // Mogelijke error opgevangen door messagebox
-                            MessageBox.Show("You are not logged in. To place a bid, you must be logged in.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Bid not placed, your minimum bid can only be 10% off.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     } else
                         // Mogelijke error opgevangen door messagebox
