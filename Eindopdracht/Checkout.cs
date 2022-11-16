@@ -80,8 +80,7 @@ namespace Eindopdracht {
                         SqlCommand cnd = new("SELECT Id, Name, Price FROM Shoe WHERE Id='" + bid.ShoeId + "'", connection);
                         SqlDataReader reader = cnd.ExecuteReader();
                         reader.Read();
-                        listOfShoes.Add(new Shoe()
-                        {
+                        listOfShoes.Add(new Shoe() {
                             Id = (int)reader["Id"],
                             Name = (string)reader["Name"],
                             Price = (decimal)reader["Price"]
@@ -224,6 +223,7 @@ namespace Eindopdracht {
                                 msb_checkout.Controls.Add(btn_ok);
                                 msb_checkout.ShowDialog();
                             }
+
                             listOfShoes.RemoveAt(0);
                         }
                     }                    
