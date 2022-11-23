@@ -6,8 +6,11 @@ using TextBox = System.Windows.Forms.TextBox;
 namespace Eindopdracht {
     public partial class Profile : Form {
         // Uw connectie met de database
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\thele\\Documents\\.NET\\Eindopdracht\\Eindopdracht\\Shop.mdf;Integrated Security=True";
-
+        static string info = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Shop.mdf"));
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                                    $"AttachDbFilename={info};" +
+                                    "Integrated Security=True;" +
+                                    "Connect Timeout=30";
         private int Id;
         private int y;
         private int userId;

@@ -2,8 +2,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 using System.Windows.Forms;
 using Button = System.Windows.Forms.Button;
 using Image = System.Drawing.Image;
@@ -11,8 +13,14 @@ using TextBox = System.Windows.Forms.TextBox;
 
 namespace Eindopdracht {
     internal class ShoeDAO {
-        // De connectiestring, dus de link van uw database 
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\thele\\Documents\\.NET\\Eindopdracht\\Eindopdracht\\Shop.mdf;Integrated Security=True";
+        // De connectiestring, dus de link van uw database
+        // string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\thele\\Documents\\.NET\\Eindopdracht\\Eindopdracht\\Shop.mdf;Integrated Security=True";
+        static string info = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Shop.mdf"));
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                                    $"AttachDbFilename={info};" +
+                                    "Integrated Security=True;" +
+                                    "Connect Timeout=30";
+
 
         // y is de locatie bepaler 
         int y = 0;

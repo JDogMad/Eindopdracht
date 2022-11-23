@@ -13,8 +13,11 @@ using Label = System.Windows.Forms.Label;
 namespace Eindopdracht {
     public partial class LogIn : Form {
         // Connectiestring van de database
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\thele\\Documents\\.NET\\Eindopdracht\\Eindopdracht\\Shop.mdf;Integrated Security=True";
-
+        static string info = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Shop.mdf"));
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                                    $"AttachDbFilename={info};" +
+                                    "Integrated Security=True;" +
+                                    "Connect Timeout=30";
         public LogIn() {
             InitializeComponent();
         }
